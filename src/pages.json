@@ -1,42 +1,57 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index"
-		},
-		{
-			"path": "pages/video/video"
-		},
-		{
-			"path": "pages/search/search"
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "自定义音乐",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	},
-	"tabBar": {
-		"color": "#b2b2b2",
-		"selectedColor": "#21d49b",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"list": [{
-			"pagePath": "pages/index/index",
-			"iconPath": "static/music.png",
-			"selectedIconPath": "static/music-a.png",
-			"text": "音乐"
-		}, {
-			"pagePath": "pages/video/video",
-			"iconPath": "static/video.png",
-			"selectedIconPath": "static/video-a.png",
-			"text": "视频"
-		}]
-	},
-	"easycom": {
-		"autoscan": true,
-		"custom": {
-			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
-		}
-	},
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+      }
+    },
+    {
+      "path": "pages/video/video",
+      "style": {
+      }
+    },
+    {
+      "path": "pages/search/search",
+      "style": {
+      }
+    },
+    {
+      "path": "pages/playing/playing",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "自定义音乐",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#b2b2b2",
+    "selectedColor": "#21d49b",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/music.png",
+        "selectedIconPath": "static/music-a.png",
+        "text": "音乐"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "iconPath": "static/video.png",
+        "selectedIconPath": "static/video-a.png",
+        "text": "视频"
+      }
+    ]
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  }
 }

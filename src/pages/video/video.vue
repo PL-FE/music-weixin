@@ -4,7 +4,7 @@
 
 <script setup lang="ts"></script>
 
-<style lang="less">
+<style lang="scss">
 .content {
   color: red;
 }

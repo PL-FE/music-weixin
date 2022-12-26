@@ -1,5 +1,5 @@
 <template>
-  <view class="search_input">
+  <view class="search_input section_conatiner">
     <navigator
       url="/pages/search/search"
       open-type="navigate"
@@ -9,20 +9,31 @@
       <text class="placeholder_text">搜索</text>
     </navigator>
   </view>
+
+  <!-- 歌曲推荐 -->
+  <SongList :dataList="newSongList" />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import { getNewsong } from "@/api/music";
+import SongList from "@/components/SongList.vue";
+const newSongList = ref<songTypes[]>([]);
+getNewsong(5).then((res) => {
+  newSongList.value = res;
+});
+</script>
 
-<style lang="less">
+<style lang="scss" scoped>
+$containerPadding: 10px;
 .search_input {
   height: 90rpx;
-  padding: 10rpx;
+  padding: 0 $containerPadding;
 }
 .search_input .navigator {
   background-color: #fff;
   box-sizing: border-box;
   height: 36px;
-  padding: 5px 8px 5px 0px;
   display: flex;
   justify-content: center;
   align-items: center;

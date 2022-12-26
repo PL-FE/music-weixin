@@ -15,4 +15,4 @@ import { ref } from "vue";
 const searchKey = ref("");
 </script>
 
-<style lang="less"></style>
+<style lang="scss"></style>
