@@ -2,8 +2,8 @@
   <image
     :src="clacSrc"
     :style="{
-      width: size + 'px',
-      height: size + 'px',
+      width: size + 'rpx',
+      height: size + 'rpx',
     }"
   ></image>
 </template>
@@ -15,7 +15,7 @@ const props = defineProps({
   src: String,
   size: {
     type: Number,
-    default: 50,
+    default: 100,
   },
 });
 const clacSrc = computed(() => {

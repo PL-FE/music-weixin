@@ -1,11 +1,11 @@
 <template>
-  <view class="section_conatiner song_recommendation">
+  <view class="section_conatiner song_recommendation" :class="{ dark: isDark }">
     <view class="section_conatiner-top">
-      <text class="main-text">歌曲推荐</text>
-      <view class="flex-center sub-text">
+      <text class="main-text">{{ props.mainText }}</text>
+      <!-- <view class="flex-center sub-text">
         <text>更多 </text>
         <uni-icons type="forward" size="15" color="#999"></uni-icons>
-      </view>
+      </view> -->
     </view>
     <view
       v-for="song in dataList"
@@ -39,42 +39,47 @@
 
 <script setup lang="ts">
 import SongAvatar from "./SongAvatar.vue";
-import { musicStore } from "@/store/index";
-const musicinfo = musicStore();
 interface Props {
   dataList: songTypes[];
+  mainText?: string;
+  navigator?: Function;
+  isDark?: boolean;
 }
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   dataList: () => [],
+  mainText: "",
+  navigator: () => ({}),
+  isDark: false,
 });
 
 const navigator = (song: songTypes) => {
-  musicinfo.setSong(song);
-  uni.navigateTo({
-    url: "/pages/playing/playing",
-  });
+  props.navigator && props.navigator(song);
 };
 </script>
 
 <style lang="scss">
-$containerPadding: 10px;
+$containerPadding: 20rpx;
+
+.dark {
+  color: #fff;
+}
 
 .section_conatiner {
-  margin-top: 10px;
+  margin-top: 20rpx;
   .section_conatiner-top {
     padding: 0 $containerPadding;
     display: flex;
     justify-content: space-between;
     .left {
       font-weight: 700;
-      font-size: 16px;
+      font-size: 32rpx;
     }
   }
 }
 
 .song-card {
-  margin: 10px;
-  margin-bottom: 10px;
+  margin: 20rpx;
+  margin-bottom: 20rpx;
   display: flex;
   align-items: center;
   .song-img {
@@ -83,11 +88,11 @@ $containerPadding: 10px;
   .song-details {
     flex: 1;
     overflow: hidden;
-    padding-right: 5px;
+    padding-right: 10rpx;
   }
   .song-sub-details {
     white-space: nowrap;
-    padding-top: 3px;
+    padding-top: 6rpx;
   }
 }
 </style>

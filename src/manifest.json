@@ -1,13 +1,13 @@
 {
     "name" : "",
-    "appid" : "wxb8a1074232ae28fe",
+    "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxb8a1074232ae28fe",
         "setting" : {
             "urlCheck" : false
         },

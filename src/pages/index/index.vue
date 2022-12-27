@@ -11,17 +11,31 @@
   </view>
 
   <!-- 歌曲推荐 -->
-  <SongList :dataList="newSongList" />
+  <SongList
+    :dataList="newSongList"
+    main-text="歌曲推荐"
+    :navigator="navigatorFunc"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { getNewsong } from "@/api/music";
 import SongList from "@/components/SongList.vue";
+import { musicStore } from "@/store/index";
+const musicinfo = musicStore();
+
 const newSongList = ref<songTypes[]>([]);
 getNewsong(5).then((res) => {
   newSongList.value = res;
 });
+
+function navigatorFunc(song: songTypes) {
+  musicinfo.setSong(song);
+  uni.navigateTo({
+    url: "/pages/playing/playing",
+  });
+}
 </script>
 
 <style lang="scss" scoped>

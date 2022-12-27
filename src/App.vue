@@ -15,12 +15,12 @@ page {
   background-color: #fafafa;
 }
 .sub-text {
-  color: $uni-color-subtitle;
-  font-size: 12px;
+  font-size: 24rpx;
+  opacity: 0.6;
 }
 .main-text {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 32rpx;
 }
 .flex-center {
   display: flex;
