@@ -17,5 +17,20 @@
     "uniStatistics": {  
         "enable": false
     },
+    /* 端口号5173*/
+    "h5": { 
+        "title": "",
+        "template": "index.html",
+        "router": {
+            "mode": "history",
+            "base": "/"
+        },
+        "async": {
+            "loading": "AsyncLoading",
+            "error": "AsyncError",
+            "delay": 200,
+            "timeout": 3000
+        }
+    },
     "vueVersion" : "3"
 }

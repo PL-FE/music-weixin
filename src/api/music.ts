@@ -177,9 +177,8 @@ export function queryArtistSublist() {
 }
 
 // 热门歌单
-export function getTopPlaylist({ index = 1, order = 'hot', cat = '全部' }) {
+export function getTopPlaylist({ index = 1, order = 'hot', cat = '全部',limit=30 }) {
   const offset = (index - 1) * 30;
-  const limit = 30;
   return api
     .get(`/top/playlist`, {
       params: {

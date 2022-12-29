@@ -1,7 +1,7 @@
 <template>
   <view class="section_conatiner song_recommendation" :class="{ dark: isDark }">
     <view class="section_conatiner-top">
-      <text class="main-text">{{ props.mainText }}</text>
+      <uni-title type="h1" :title="props.mainText"></uni-title>
       <!-- <view class="flex-center sub-text">
         <text>更多 </text>
         <uni-icons type="forward" size="15" color="#999"></uni-icons>
@@ -22,6 +22,8 @@
             ><text>{{ song.name }}</text>
           </view>
           <view class="song-sub-details sub-text">
+            <text v-if="song.sqMusic" class="sign-text sq"> SQ </text>
+            <text v-if="song.fee === 1" class="sign-text vip"> vip </text>
             <text>{{ song.artists.map((a) => a.name).join("") }}</text
             >·
             <text>
@@ -39,6 +41,7 @@
 
 <script setup lang="ts">
 import SongAvatar from "./SongAvatar.vue";
+import { musicStore } from "@/store/index";
 interface Props {
   dataList: songTypes[];
   mainText?: string;
@@ -48,12 +51,15 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   dataList: () => [],
   mainText: "",
-  navigator: () => ({}),
   isDark: false,
 });
 
+const musicinfo = musicStore();
 const navigator = (song: songTypes) => {
-  props.navigator && props.navigator(song);
+  musicinfo.setSong(song);
+  uni.navigateTo({
+    url: "/pages/playing/playing",
+  });
 };
 </script>
 

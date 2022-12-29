@@ -11,31 +11,27 @@
   </view>
 
   <!-- 歌曲推荐 -->
-  <SongList
-    :dataList="newSongList"
-    main-text="歌曲推荐"
-    :navigator="navigatorFunc"
-  />
+  <SongList :dataList="newSongList" main-text="歌曲推荐" />
+  <!-- 热门取单 -->
+  <ScrollViewCard :dataList="hotPlayList" main-text="热门歌单" />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { getNewsong } from "@/api/music";
+import { getNewsong, getTopPlaylist } from "@/api/music";
 import SongList from "@/components/SongList.vue";
-import { musicStore } from "@/store/index";
-const musicinfo = musicStore();
+import ScrollViewCard from "@/components/ScrollViewCard.vue";
 
 const newSongList = ref<songTypes[]>([]);
+const hotPlayList = ref<playListTypes[]>([]);
 getNewsong(5).then((res) => {
   newSongList.value = res;
 });
+getTopPlaylist({ limit: 10 }).then((res) => {
+  console.log(23, res);
 
-function navigatorFunc(song: songTypes) {
-  musicinfo.setSong(song);
-  uni.navigateTo({
-    url: "/pages/playing/playing",
-  });
-}
+  hotPlayList.value = res.playlists;
+});
 </script>
 
 <style lang="scss" scoped>

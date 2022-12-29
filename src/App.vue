@@ -35,4 +35,26 @@ page {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.ellipsis-2 {
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.sign-text {
+  font-size: 18rpx;
+  border: 1px solid;
+  padding: 0px 2rpx;
+  font-weight: 900;
+
+  &.vip {
+    color: #21d49b;
+    border-color: #21d49b;
+  }
+  &.sq {
+    color: #e5b046;
+    border-color: #e5b046;
+  }
+}
 </style>

@@ -28,6 +28,8 @@ declare type songTypes = {
   url: string; // mp3
   mp3Url: string; // mp3
   duration: number; // 时长
+  sqMusic:object|null,
+  fee:number,
   resourceType: resourceType;
   resource: {
     albumId?: number;
@@ -51,6 +53,7 @@ declare type playListTypes = {
   coverImgUrl?: string;
   description?: string;
   trackIds?: object[];
+  playCount:number,
   resourceType: resourceType;
 };
 // 专辑

@@ -1,6 +1,6 @@
 <template>
   <scroll-view scroll-y="true" class="scroll-Y" v-if="cursong.name">
-    <view class="main-text text" :style="titleStyle">
+    <view class="main-text text" :style="titleStyle || {}">
       <text>{{ cursong.name }}</text>
     </view>
     <view class="text-center sub-text text ellipsis">{{
@@ -56,12 +56,17 @@ const bgUrl = ref("");
 const bgUrlMini = ref("");
 const cursong = ref({} as songTypes);
 let bgAudioManager: any = null;
-
+let paddingTop = 20 + "px";
+let lineHeight = 20 + "px";
+// #ifdef MP-WEIXIN
 const res = uni.getMenuButtonBoundingClientRect();
+paddingTop = res.top + "px";
+lineHeight = res.height + "px";
+// #endif
 
 const titleStyle = ref({
-  paddingTop: res.top + "px",
-  lineHeight: res.height + "px",
+  paddingTop,
+  lineHeight,
 });
 
 const imgSize = 440;
@@ -72,7 +77,9 @@ const clacSrc = computed(() => {
 watchEffect(() => {
   if (musicinfo.curSong) {
     cursong.value = <songTypes>musicinfo.curSong;
+    // #ifdef MP-WEIXIN
     createBgMusic(cursong.value);
+    // #endif
   }
   const _bgUrl = cursong.value?.album?.picUrl;
   if (_bgUrl) {
@@ -90,6 +97,9 @@ function togetherPlay() {
 }
 
 function createBgMusic(cursong: songTypes) {
+  if (!uni.getBackgroundAudioManager) {
+    return;
+  }
   bgAudioManager = uni.getBackgroundAudioManager();
   musicinfo.setBgAudioManager(bgAudioManager);
   bgAudioManager.title = cursong.name;

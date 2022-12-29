@@ -1,5 +1,6 @@
 <template>
   <image
+    class="image"
     :src="clacSrc"
     :style="{
       width: size + 'rpx',
@@ -24,7 +25,7 @@ const clacSrc = computed(() => {
 </script>
 
 <style lang="scss">
-.content {
-  color: red;
+.image {
+  border-radius: 15rpx;
 }
 </style>
