@@ -28,8 +28,6 @@ getNewsong(5).then((res) => {
   newSongList.value = res;
 });
 getTopPlaylist({ limit: 10 }).then((res) => {
-  console.log(23, res);
-
   hotPlayList.value = res.playlists;
 });
 </script>

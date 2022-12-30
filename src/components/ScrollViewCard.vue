@@ -25,7 +25,7 @@
           ></SongAvatar>
           <text class="playCount"> {{ wrapCount(item.playCount) }}</text>
         </view>
-        <view class="playlist-name">
+        <view class="ellipsis-2 playlist-name">
           {{ item.name }}
         </view>
       </view>
@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const navigator = (item: playListTypes) => {
   uni.navigateTo({
-    url: "/pages/playlists/playlists",
+    url: "/pages/playlists/playlists?id=" + item.id,
   });
 };
 

@@ -24,7 +24,6 @@
     {
       "path": "pages/playlists/playlists",
       "style": {
-        "navigationStyle": "custom"
       }
     }
   ],
